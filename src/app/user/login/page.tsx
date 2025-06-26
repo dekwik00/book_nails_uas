@@ -43,9 +43,13 @@ export default function UserLogin() {
         if (error) throw error;
         router.push('/user/dashboard');
       }
-    } catch (error: any) {
-      console.error('Auth error:', error);
-      setError(error.message || 'Terjadi kesalahan saat login/registrasi');
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        console.error('Auth error:', error);
+        setError(error.message || 'Terjadi kesalahan saat login/registrasi');
+      } else {
+        setError('Terjadi kesalahan saat login/registrasi');
+      }
     } finally {
       setLoading(false);
     }

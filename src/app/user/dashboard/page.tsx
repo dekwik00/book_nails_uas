@@ -5,11 +5,12 @@ import { supabase } from '@/lib/supabaseClient';
 import { useRouter } from 'next/navigation';
 import { Slot } from '@/types/database';
 import Link from 'next/link';
+import { User } from '@supabase/supabase-js';
 
 export default function UserDashboard() {
   const [slots, setSlots] = useState<Slot[]>([]);
   const [loading, setLoading] = useState(true);
-  const [user, setUser] = useState<any>(null);
+  const [user, setUser] = useState<User | null>(null);
   const [error, setError] = useState('');
   const router = useRouter();
 
