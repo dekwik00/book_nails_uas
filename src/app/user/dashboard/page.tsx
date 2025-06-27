@@ -40,7 +40,7 @@ export default function UserDashboard() {
           .order('tanggal', { ascending: true })
           .order('jam', { ascending: true });
 
-        const { data: profile, error: profileError } = await supabase
+        const { data: profile } = await supabase
           .from('user_profiles')
           .select('*')
 
